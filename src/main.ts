@@ -1,24 +1,26 @@
-import typescriptLogo from "./typescript.svg";
-import viteLogo from "/vite.svg";
 import { setupCounter } from "./counter.ts";
-import styles from "./styles.module.css";
+import { Verification } from "./pages/Verefication/Verification.ts";
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank" class=${styles.hello}>
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+const ROUTERS = new Map([["/verification", Verification]]);
+
+// представим что тут волидации на не корректную страницу
+const navigateToErrorPage = () => {
+  history.pushState(null, "", "verification");
+  renderComponent(Verification);
+};
+
+const curentContent = async () => {
+  const content = await ROUTERS.get(window.location.pathname);
+
+  if (!content) return navigateToErrorPage();
+
+  renderComponent(content);
+};
+
+const renderComponent = (content: () => void) => {
+  document.querySelector<HTMLDivElement>("#app")!.innerHTML = `${content()}`;
+};
+
+curentContent();
 
 setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
