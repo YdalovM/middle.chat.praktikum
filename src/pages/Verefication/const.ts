@@ -1,42 +1,44 @@
-export const MOCK_CARD_LIST = [
+import { IVerificationContent } from "./types";
+
+export const VERIFICATION_INPUTS_LOGIN = [
   {
-    title: "card1",
-    desc: "desc1",
+    type: "text",
+    placeholder: "Логин",
+    name: "login",
   },
   {
-    title: "card2",
-    desc: "desc2",
-  },
-  {
-    title: "card3",
-    desc: "desc3",
-  },
-  {
-    title: "card4",
-    desc: "desc4",
-  },
-  {
-    title: "card5",
-    desc: "desc5",
-  },
-  {
-    title: "card6",
-    desc: "desc6",
-  },
-  {
-    title: "card7",
-    desc: "desc7",
-  },
-  {
-    title: "card8",
-    desc: "desc8",
-  },
-  {
-    title: "card9",
-    desc: "desc9",
-  },
-  {
-    title: "card10",
-    desc: "desc10",
+    type: "password",
+    placeholder: "Пароль",
+    name: "password",
   },
 ];
+
+export const VERIFICATION_INPUTS_REGISTER = [
+  {
+    type: "text",
+    placeholder: "Логин",
+    name: "login",
+  },
+  {
+    type: "password",
+    placeholder: "Пароль",
+    name: "password",
+  },
+];
+
+export const VERIFICATION_CONTENT: Record<string, IVerificationContent> = {
+  "/login": {
+    title: "Вход",
+    button_text: "Зарегистрироваться",
+    link_text: "Нет аккаунта?",
+    link_path: "/register",
+    inputs: VERIFICATION_INPUTS_LOGIN,
+  },
+  "/register": {
+    title: "Регистрация",
+    button_text: "Авторизоваться",
+    link_text: "Войти",
+    link_path: "/login",
+    inputs: VERIFICATION_INPUTS_REGISTER,
+  },
+};

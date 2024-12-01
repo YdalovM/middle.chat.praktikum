@@ -1,26 +1,12 @@
-import { setupCounter } from "./counter.ts";
-import { Verification } from "./pages/Verefication/Verification.ts";
+import { navigateToErrorPage, routers } from "./navigate.ts";
+import { renderTemplate } from "./template/renderTemplate.ts";
+import { EERRORS } from "./types/general.ts";
 
-const ROUTERS = new Map([["/verification", Verification]]);
+export const render = async () => {
+  let content = await routers();
+  if (!content) content = await navigateToErrorPage(EERRORS.NOT_FOUND);
 
-// представим что тут волидации на не корректную страницу
-const navigateToErrorPage = () => {
-  history.pushState(null, "", "verification");
-  renderComponent(Verification);
+  renderTemplate(content!);
 };
 
-const curentContent = async () => {
-  const content = await ROUTERS.get(window.location.pathname);
-
-  if (!content) return navigateToErrorPage();
-
-  renderComponent(content);
-};
-
-const renderComponent = (content: () => void) => {
-  document.querySelector<HTMLDivElement>("#app")!.innerHTML = `${content()}`;
-};
-
-curentContent();
-
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+render();
