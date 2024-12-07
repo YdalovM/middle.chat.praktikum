@@ -1,5 +1,4 @@
 export enum EPATHS {
-  VEREFICATION = "/verification",
   SERVER_ERROR = "/server_error",
   NOT_FOUND = "/not_found",
   LOGIN = "/login",

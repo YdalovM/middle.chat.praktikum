@@ -3,11 +3,13 @@ import { renderTemplate } from "./template/renderTemplate.ts";
 import { EERRORS } from "./types/general.ts";
 import "./main.scss";
 
-export const render = async () => {
-  let content = await routers();
-  if (!content) content = await navigateToErrorPage(EERRORS.NOT_FOUND);
+export const render = () => {
+  let content = routers();
+  if (!content) content = navigateToErrorPage(EERRORS.NOT_FOUND);
 
   renderTemplate(content!);
 };
 
-render();
+window.addEventListener("DOMContentLoaded", () => {
+  render();
+});

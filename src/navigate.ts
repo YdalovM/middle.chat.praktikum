@@ -11,9 +11,10 @@ const ROUTERS = new Map([
   ["/not_found", Error],
 ]);
 
-export const routers = async () => {
+export const routers = () => {
   const pathname = window.location.pathname;
-  return await ROUTERS.get(pathname);
+
+  return ROUTERS.get(pathname);
 };
 
 export const navigateToErrorPage = (error: EERRORS) => {

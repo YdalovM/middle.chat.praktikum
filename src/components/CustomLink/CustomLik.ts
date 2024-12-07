@@ -1,9 +1,14 @@
-export const CustomLink = (link: string) => {
-  // к слову а обналяет страницу, у меня будет другая новигация, которая будет взоимодействовать с hostory
+import { handleClickBySelector } from "../../hooks/handleClickBySelector";
+import { navigate } from "../../navigate";
+import { EPATHS } from "../../types/general";
+import styles from "./styles.module.scss";
+
+export const CustomLink = (link: EPATHS, text: string, className?: string) => {
+  handleClickBySelector(styles.link, () => navigate(link));
 
   return `
-    <div>
-        <a src="http://localhost:5173/${link}">НУ ПРЯМ ФАРШ ССЫЛКА</span>
+    <div class="${styles.link} ${className}">
+      <span>${text}</span>
     </div>
     `;
 };
