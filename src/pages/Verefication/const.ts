@@ -55,14 +55,14 @@ export const VERIFICATION_INPUTS_REGISTER = [
 export const VERIFICATION_CONTENT: Record<string, IVerificationContent> = {
   "/login": {
     title: "Вход",
-    button_text: "Зарегистрироваться",
+    button_text: "Авторизоваться",
     link_text: "Нет аккаунта?",
     link_path: EPATHS.REGISTER,
     inputs: VERIFICATION_INPUTS_LOGIN,
   },
   "/register": {
     title: "Регистрация",
-    button_text: "Авторизоваться",
+    button_text: "Зарегистрироваться",
     link_text: "Войти",
     link_path: EPATHS.LOGIN,
     inputs: VERIFICATION_INPUTS_REGISTER,

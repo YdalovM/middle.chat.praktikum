@@ -1,8 +1,8 @@
 import { VerificationInputsList } from "./components/verificationInputsList/verificationInputsList";
 import { VERIFICATION_CONTENT } from "./const";
 import styles from "./styles.module.scss";
-import { BlueButton } from "../../components/Button/BlueButton";
-import { CustomLink } from "../../components/CustomLink/CustomLik";
+import { BlueButton } from "../../components/button/BlueButton";
+import { CustomLink } from "../../components/customLink/CustomLik";
 
 export const Verification = () => {
   const pathname = window.location.pathname;
